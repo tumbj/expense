@@ -1,4 +1,4 @@
-package tum.ku;
+package tum.ku.Model;
 
 import java.util.ArrayList;
 
@@ -7,43 +7,54 @@ import java.util.ArrayList;
  */
 public class Account {
 
-    private int balance;
-
+    private double balance;
+    private static int id;
     private ArrayList<String> explain;
-    private ArrayList<Integer> history;
+    private ArrayList<Double> history;
+
     public Account(int money) {
         balance = money;
+        id = 0;
         explain = new ArrayList<>();
         history = new ArrayList<>();
     }
     public Account() {
         this.balance = 0;
+        id=0;
         explain = new ArrayList<>();
         history = new ArrayList<>();
     }
 
-    public void income(int money,String explain){
+    public void income(double money,String explain){
+        id++;
         this.balance+=money;
         this.history.add(money);
         this.explain.add(explain);
     }
 
-    public void expense(int money,String explain){
+    public void expense(double money,String explain){
+        id++;
         this.balance -=money;
         this.history.add(money);
         this.explain.add(explain);
     }
 
-    public int getBalance(){
+    public double getBalance(){
         return balance;
     }
     public String getBalanceAndHistoty(){
         String tmp = "";
-        for (int i = 0; i < history.size(); i++) {
-            tmp += history.get(i) + " " + explain.get(i) +"\n";
+        for (int j = 0; j < history.size(); j++) {
+            tmp += "id :"+j+" " + history.get(j) + " " + explain.get(j) +" balance :"+balance+"\n";
         }
-        return tmp+"\n"+"balance: "+balance;
+        return tmp;
     }
+//    public void editIncome(double money,String exp){
+//        if (money > history.get(id)){
+//
+//        }
+//
+//    }
 
     public void setBalance(int balance) {
         this.balance = balance;

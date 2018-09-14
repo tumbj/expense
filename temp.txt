@@ -1,0 +1,4 @@
+
+id :0 100.0 Mother give balance :400.0
+id :1 200.0 buy model balance :400.0
+id :2 500.0 Father give balance :400.0

@@ -2,6 +2,8 @@ package tum.ku;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
+import tum.ku.Model.Account;
+
 import static org.junit.Assert.*;
 /**
  * Created by 708 on 8/31/2018.
