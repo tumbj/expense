@@ -45,7 +45,7 @@ public class Account {
     public String getBalanceAndHistoty(){
         String tmp = "";
         for (int j = 0; j < history.size(); j++) {
-            tmp += "id :"+j+" " + history.get(j) + " " + explain.get(j) +" balance :"+balance+"\n";
+            tmp += "id :"+j+" " + history.get(j) + " " + explain.get(j) +"\n";
         }
         return tmp;
     }
