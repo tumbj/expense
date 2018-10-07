@@ -37,7 +37,7 @@ public class MainController {
 
         view.appendText(showData());
         view.setEditable(false);
-
+        account.setBalance(getBalanceDB());
         showBalance.setText(account.getBalance()+"");
         saveBtn.setOpacity(0);
         cancelBtn.setOpacity(0);
@@ -69,9 +69,12 @@ public class MainController {
         editBtn.setVisible(true);
         view.setEditable(true);
 
+
     }
     @FXML
-    public void actionSaveBtn(ActionEvent a){
+    public void actionSaveBtn(ActionEvent e){
+
+
         saveBtn.setOpacity(0);
         cancelBtn.setOpacity(0);
         addBtn.setOpacity(1);
@@ -83,9 +86,12 @@ public class MainController {
                 fw = new FileWriter(fileName,false);
                 bw = new BufferedWriter(fw);
                 bw.write(content);
+                account.setBalance(getBalanceDB());
 
-        } catch (IOException e) {
-                e.printStackTrace();
+
+
+        } catch (IOException a) {
+               a.printStackTrace();
         } finally {
                 try {
                     if (bw != null)
@@ -140,5 +146,44 @@ public class MainController {
                             + fileName + "'");
         }
         return n;
+    }
+    public double getBalanceDB(){
+        double balance = 0;
+        String n[] ;
+        try {
+
+            FileReader fileReader =
+                    new FileReader(fileName);
+
+
+            BufferedReader bufferedReader =
+                    new BufferedReader(fileReader);
+
+            while((line = bufferedReader.readLine()) != null) {
+
+                n = line.split(":");
+                if(!n[0].equals("") ) {
+                    balance+= Double.parseDouble(n[0]);
+                }
+
+            }
+            bufferedReader.close();
+            return (balance);
+
+        }
+        catch(FileNotFoundException ex) {
+            System.out.println(
+                    "Unable to open file '" +
+                            fileName + "'");
+        }
+        catch(IOException ex) {
+            System.out.println(
+                    "Error reading file '"
+                            + fileName + "'");
+        }
+        catch (Exception e){
+            System.out.println("ERROR");
+        }
+        return  0;
     }
 }

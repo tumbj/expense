@@ -48,7 +48,7 @@ public class AddPageController {
             money = Double.parseDouble(fillMoney.getText());
             account.income(money,fillExplain.getText());
             addDataToDB(money,fillExplain.getText());
-            System.out.println(account.getBalance());
+
         }catch (IllegalArgumentException il){
             System.err.println("Missmath Input");
         }catch (Exception e){
@@ -59,9 +59,8 @@ public class AddPageController {
     @FXML
     public void actionSubmitExpenseBtn(ActionEvent a){
         try {
-            money = Double.parseDouble(fillMoney.getText());
+            money = Double.parseDouble("-"+fillMoney.getText());
             account.expense(money,fillExplain.getText());
-            System.out.println(account.getBalance());
             addDataToDB(money,fillExplain.getText());
         }catch (IllegalArgumentException il){
             System.err.println("Missmath Input");
@@ -89,7 +88,7 @@ public class AddPageController {
     }
     public void addDataToDB(double money,String explain){
         try {
-            String content = explain +" Money: " +money+"\n";
+            String content = money+": " +explain+"\n";
             fw = new FileWriter(fileName,true);
             bw = new BufferedWriter(fw);
             bw.write(content);

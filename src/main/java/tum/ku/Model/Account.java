@@ -56,7 +56,7 @@ public class Account {
 //
 //    }
 
-    public void setBalance(int balance) {
+    public void setBalance(double balance) {
         this.balance = balance;
     }
 }
