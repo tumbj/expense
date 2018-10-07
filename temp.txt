@@ -1,4 +1,4 @@
-mom give Money: 500.0
-buy model Money: 300.0
-buy rice Money: 500.0
-Dad give Money: 600.0
+550.0:mom give Money
+
+500.0: dad give
+-45.0: buy water
